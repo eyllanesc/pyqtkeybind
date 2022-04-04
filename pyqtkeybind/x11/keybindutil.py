@@ -101,7 +101,7 @@ def parse_keystring(conn, key_string):
     keysequence = QKeySequence(key_string)
     ks = keysequence[0]
     if qtpy.API_NAME in ("PyQt6", "PySide6"):
-        ks = ks.keyboardModifiers() 
+        ks = ks.toCombined() 
     
 
     # Calculate the modifiers
