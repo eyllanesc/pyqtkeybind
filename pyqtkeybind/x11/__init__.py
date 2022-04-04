@@ -3,7 +3,7 @@
 import sys
 from collections import defaultdict
 
-from PyQt5.QtX11Extras import QX11Info
+from qtpy.QtX11Extras import QX11Info
 import xcffib
 import xcffib.xproto
 from xcffib import ffi
