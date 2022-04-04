@@ -7,7 +7,7 @@ Every thing other than utilities needed for global key binding are removed.
 
 from collections import defaultdict
 
-from xcffib import xproto
+from xcffib import xproto   
 import qtpy
 
 from .keysymdef import keysyms, keysym_strings
@@ -103,7 +103,7 @@ def parse_keystring(conn, key_string):
     keysequence = QKeySequence(key_string)
     ks = keysequence[0]
     if qtpy.API_NAME in ("PyQt6", "PySide6"):
-        ks = ks.toCombined() 
+        ks = ks.keyboardModifiers() 
     
 
     # Calculate the modifiers
