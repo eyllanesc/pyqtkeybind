@@ -100,31 +100,33 @@ def parse_keystring(conn, key_string):
     from qtpy.QtCore import Qt
     from .qt_keycodes import KeyTbl, ModsTbl
 
+    nomodifier = getattr(Qt.NoModifier, "value", Qt.NoModifier)
+    shitfmodifier = getattr(Qt.ShiftModifier, "value", Qt.ShiftModifier)
+    altmodifier = getattr(Qt.AltModifier, "value", Qt.AltModifier)
+    controlmodifier = getattr(Qt.ControlModifier, "value", Qt.ControlModifier)
+    
+
     keysequence = QKeySequence(key_string)
     ks = keysequence[0]
     if qtpy.API_NAME in ("PyQt6", "PySide6"):
         ks = ks.keyboardModifiers() 
-    
 
     # Calculate the modifiers
-    mods = Qt.NoModifier
-    qtmods = Qt.NoModifier
+    mods = nomodifier
+    qtmods = nomodifier
     modifiers = 0
-    if (ks & Qt.ShiftModifier == Qt.ShiftModifier):
-        mods |= Qt.KeyboardModifier(ModsTbl.index(Qt.ShiftModifier))
-        qtmods |= Qt.ShiftModifier.real
+    if (ks & shitfmodifier == shitfmodifier):
+        mods |= ModsTbl.index(shitfmodifier)
         modifiers |= getattr(xproto.KeyButMask, "Shift", 0)
-    if (ks & Qt.AltModifier == Qt.AltModifier):
-        mods |= Qt.KeyboardModifier(ModsTbl.index(Qt.AltModifier))
-        qtmods |= Qt.AltModifier.real
+    if (ks & altmodifier == altmodifier):
+        mods |= ModsTbl.index(altmodifier)
         modifiers |= getattr(xproto.KeyButMask, "Mod1", 0)
-    if (ks & Qt.ControlModifier == Qt.ControlModifier):
-        mods |= Qt.KeyboardModifier(ModsTbl.index(Qt.ControlModifier))
-        qtmods |= Qt.ControlModifier.real
+    if (ks & controlmodifier == controlmodifier):
+        mods |= ModsTbl.index(controlmodifier)
         modifiers |= getattr(xproto.KeyButMask, "Control", 0)
 
     # Calculate the keys
-    qtkeys = ks ^ qtmods
+    qtkeys = ks ^ mods
     key = QKeySequence(Qt.Key(qtkeys)).toString().lower()
     keycode = lookup_string(conn, key)
     return modifiers, keycode
