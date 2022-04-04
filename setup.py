@@ -20,7 +20,7 @@ VERSION = (0, 0, 9)
 # Dependencies required for execution
 REQUIRED = [
     "xcffib; sys_platform != 'win32'",
-    "PyQt6"
+    "qtpy"
 ]
 
 here = os.path.abspath(os.path.dirname(__file__))
