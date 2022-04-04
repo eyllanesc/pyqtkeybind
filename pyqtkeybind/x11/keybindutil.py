@@ -8,6 +8,8 @@ Every thing other than utilities needed for global key binding are removed.
 from collections import defaultdict
 
 from xcffib import xproto
+import qtpy
+
 from .keysymdef import keysyms, keysym_strings
 
 __kbmap = None
