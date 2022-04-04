@@ -2,8 +2,8 @@
 
 import ctypes
 from ctypes import windll
-from PyQt5.QtGui import QKeySequence
-from PyQt5.QtCore import Qt
+from qtpy.QtGui import QKeySequence
+from qtpy.QtCore import Qt
 
 from .keycodes import KeyTbl, ModsTbl
 

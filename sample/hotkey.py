@@ -4,8 +4,8 @@
 
 import sys
 
-from PyQt5 import QtWidgets
-from PyQt5.QtCore import QAbstractNativeEventFilter, QAbstractEventDispatcher
+from qtpy import QtWidgets
+from qtpy.QtCore import QAbstractNativeEventFilter, QAbstractEventDispatcher
 
 from pyqtkeybind import keybinder
 

@@ -3,7 +3,7 @@
 # https://raw.githubusercontent.com/qtproject/qtbase/dev/src/plugins/platforms/windows/qwindowskeymapper.cpp
 # flake8: noqa
 
-from PyQt5 import QtCore
+from qtpy import QtCore
 
 # Key translation ---------------------------------------------------------------------[ start ] --
 # Meaning of values:

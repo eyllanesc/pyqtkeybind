@@ -5,7 +5,7 @@
 Maps the Qt keycodes to X11.
 See github/qtproject/qtbase/dev/src/plugins/platforms/xcb/qxcbkeyboard.cpp
 """
-from PyQt5.QtCore import Qt
+from qtpy.QtCore import Qt
 
 # keyboard mapping table
 KeyTbl = {
