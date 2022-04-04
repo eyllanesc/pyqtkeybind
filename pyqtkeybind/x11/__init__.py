@@ -3,14 +3,13 @@
 import sys
 from collections import defaultdict
 
-from qtpy.QtX11Extras import QX11Info
 import xcffib
 import xcffib.xproto
 from xcffib import ffi
 from struct import unpack
-import sip
 
 from .keybindutil import *
+from .qtx11extras import QX11Info
 
 # class X11KeyBinder(KeyBinder):
 class X11KeyBinder(object):
@@ -18,8 +17,7 @@ class X11KeyBinder(object):
 
     def init(self):
         # Get the X11 connection and update keyboard mappings
-        qt_conn = QX11Info.connection()
-        ptr = sip.unwrapinstance(qt_conn)
+        ptr = QX11Info.connection()
         self.conn = xcffib.wrap(ptr)
         update_keyboard_mapping(self.conn, None)
 

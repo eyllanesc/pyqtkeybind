@@ -94,8 +94,8 @@ def parse_keystring(conn, key_string):
     :rtype: (mask, int)
     """
     # FIXME this code is temporary hack, requires better abstraction
-    from PyQt5.QtGui import QKeySequence
-    from PyQt5.QtCore import Qt
+    from qtpy.QtGui import QKeySequence
+    from qtpy.QtCore import Qt
     from .qt_keycodes import KeyTbl, ModsTbl
 
     keysequence = QKeySequence(key_string)
