@@ -126,7 +126,7 @@ def parse_keystring(conn, key_string):
 
     # Calculate the keys
     qtkeys = ks ^ qtmods
-    key = QKeySequence(Qt.Key(qtkeys)).toString().lower()
+    key = QKeySequence(Qt.Key(qtkeys.value)).toString().lower()
     keycode = lookup_string(conn, key)
     return modifiers, keycode
 
