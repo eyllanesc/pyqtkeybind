@@ -318,17 +318,23 @@ KeyTbl = {
     0:                          0
 }
 
+
+nomodifier = getattr(Qt.NoModifier, "value", Qt.NoModifier)
+shitfmodifier = getattr(Qt.ShiftModifier, "value", Qt.ShiftModifier)
+altmodifier = getattr(Qt.AltModifier, "value", Qt.AltModifier)
+controlmodifier = getattr(Qt.ControlModifier, "value", Qt.ControlModifier)
+
 # Possible modifier states.
 ModsTbl = [
-    Qt.NoModifier,                                           # 0
-    Qt.ShiftModifier,                                        # 1
-    Qt.ControlModifier,                                      # 2
-    Qt.ControlModifier | Qt.ShiftModifier,                   # 3
-    Qt.AltModifier,                                          # 4
-    Qt.AltModifier | Qt.ShiftModifier,                       # 5
-    Qt.AltModifier | Qt.ControlModifier,                     # 6
-    Qt.AltModifier | Qt.ShiftModifier | Qt.ControlModifier,  # 7
+    nomodifier,                                     # 0
+    shitfmodifier,                                  # 1
+    controlmodifier,                                # 2
+    controlmodifier | shitfmodifier,                # 3
+    altmodifier,                                    # 4
+    altmodifier | shitfmodifier,                    # 5
+    altmodifier | controlmodifier,                  # 6
+    altmodifier | shitfmodifier | controlmodifier,  # 7
 
     # Fall-back to raw Key_*, for non-latin1 kb layouts
-    Qt.NoModifier
+    nomodifier
 ]

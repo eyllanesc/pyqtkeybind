@@ -115,6 +115,7 @@ def parse_keystring(conn, key_string):
     mods = nomodifier
     qtmods = nomodifier
     modifiers = 0
+    
     if (ks & shitfmodifier == shitfmodifier):
         mods |= ModsTbl.index(shitfmodifier)
         modifiers |= getattr(xproto.KeyButMask, "Shift", 0)
