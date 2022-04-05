@@ -115,13 +115,13 @@ def parse_keystring(conn, key_string):
     qtmods = Qt.NoModifier
     modifiers = 0
     if (ks & Qt.ShiftModifier == Qt.ShiftModifier):
-        qtmods |= Qt.ShiftModifier.real
+        qtmods |= Qt.ShiftModifier
         modifiers |= getattr(xproto.KeyButMask, "Shift", 0)
     if (ks & Qt.AltModifier == Qt.AltModifier):
-        qtmods |= Qt.AltModifier.real
+        qtmods |= Qt.AltModifier
         modifiers |= getattr(xproto.KeyButMask, "Mod1", 0)
     if (ks & Qt.ControlModifier == Qt.ControlModifier):
-        qtmods |= Qt.ControlModifier.real
+        qtmods |= Qt.ControlModifier
         modifiers |= getattr(xproto.KeyButMask, "Control", 0)
 
     # Calculate the keys
