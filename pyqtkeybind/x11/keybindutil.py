@@ -109,24 +109,24 @@ def parse_keystring(conn, key_string):
     keysequence = QKeySequence(key_string)
     ks = keysequence[0]
     if qtpy.API_NAME in ("PyQt6", "PySide6"):
-        ks = ks.keyboardModifiers()
+        ks = ks.toCombined()
 
     # Calculate the modifiers
     qtmods = Qt.NoModifier
     modifiers = 0
-    if (ks & Qt.ShiftModifier == Qt.ShiftModifier):
+    if (ks & Qt.ShiftModifier.value == Qt.ShiftModifier.value):
         qtmods |= Qt.ShiftModifier
         modifiers |= getattr(xproto.KeyButMask, "Shift", 0)
-    if (ks & Qt.AltModifier == Qt.AltModifier):
+    if (ks & Qt.AltModifier.value == Qt.AltModifier.value):
         qtmods |= Qt.AltModifier
         modifiers |= getattr(xproto.KeyButMask, "Mod1", 0)
-    if (ks & Qt.ControlModifier == Qt.ControlModifier):
+    if (ks & Qt.ControlModifier.value == Qt.ControlModifier.value):
         qtmods |= Qt.ControlModifier
         modifiers |= getattr(xproto.KeyButMask, "Control", 0)
 
     # Calculate the keys
-    qtkeys = ks ^ qtmods
-    key = QKeySequence(Qt.Key(qtkeys.value)).toString().lower()
+    qtkeys = ks ^ qtmods.value
+    key = QKeySequence(Qt.Key(qtkeys)).toString().lower()
     keycode = lookup_string(conn, key)
     return modifiers, keycode
 
